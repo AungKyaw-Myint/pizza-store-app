@@ -59,9 +59,9 @@ public class Helpers {
     public static boolean readBoolean(String prompt){
         while(true){
            String answer = readString(prompt);
-           if (answer.equals("yes")){
+           if (answer.equalsIgnoreCase("y")){
                return true;
-           } else if(answer.equals("no")) {
+           } else if(answer.equalsIgnoreCase("n")) {
                return false;
            }
         }
@@ -100,5 +100,20 @@ public class Helpers {
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         return date.format(formatter);
+    }
+
+    public static void displayHeader() {
+        System.out.println();
+        System.out.println("┌─────────────────────────────────────────────┐");
+        System.out.println("│        🍕 PIZZIO PIZZA SYSTEM 🍕            │");
+        System.out.println("└─────────────────────────────────────────────┘");
+    }
+
+    public static void displayFooter(){
+        System.out.println("───────────────────────────────────────────────");
+    }
+
+    public static void displayByName(String name) {
+        System.out.println("──────────\t" + name + "\t──────────");
     }
 }

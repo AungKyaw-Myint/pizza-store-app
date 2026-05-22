@@ -8,6 +8,7 @@ import org.puralsight.model.Drink;
 import org.puralsight.model.GarlicKnots;
 import org.puralsight.model.Item;
 import org.puralsight.model.Pizza;
+import org.puralsight.view.HomePage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,10 @@ import java.util.List;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static void main() {
+
+        HomePage userInterface= new HomePage();
+        userInterface.starter();
+
         List<Item> item= new ArrayList<>();
         Pizza pizza= new Pizza();
         pizza.setPizzaSize(PizzaSize.LARGE);

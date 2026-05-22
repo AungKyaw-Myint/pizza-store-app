@@ -1,9 +1,9 @@
-package org.puralsight.view;
+package org.puralsight.view.enums;
 
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum OrderMenuOption {
+public enum OrderViewOption {
     ADD_PIZZA(1, "Add Pizza"),
     ADD_DRINK(2, "Add Drink"),
     ADD_GARLIC_KNOTS(3, "Add Garlic Knots"),
@@ -13,7 +13,7 @@ public enum OrderMenuOption {
     private final int code;
     private final String label;
 
-    OrderMenuOption(int code, String label) {
+    OrderViewOption(int code, String label) {
         this.code = code;
         this.label = label;
     }
@@ -26,7 +26,7 @@ public enum OrderMenuOption {
         return label;
     }
 
-    public static Optional<OrderMenuOption> fromCode(int code) {
+    public static Optional<OrderViewOption> fromCode(int code) {
         return Arrays.stream(values())
                 .filter(option -> option.code == code)
                 .findFirst();
