@@ -79,6 +79,7 @@ public class Pizza extends Item implements Priceable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        double pizzaPrice= getTotalPrice();
         // PIZZAS
         sb.append("\n🍕 PIZZAS:\n" + getQuantity());
         sb.append(String.format("Size          : %s%n", pizzaSize));
@@ -104,8 +105,23 @@ public class Pizza extends Item implements Priceable {
         }
 
         sb.append("───────────────────────────────────────────────\n");
-        sb.append(String.format("TOTAL: $%.2f%n", getTotalPrice()));
+//        sb.append(String.format("TOTAL: $%.2f%n", getTotalPrice()));
+//        sb.append(String.format(
+//                "🍕   %-1s %-15s $%-10.2f  Total: $%3.2f%n",
+//                getQuantity(),
+//                "Pizza",
+//                pizzaPrice,
+//                pizzaPrice * getQuantity()
+//        ));
 
+        sb.append(String.format(
+                "🍕   %-3s %-14s %-10s $%-8.2f Total: $%-8.2f%n",
+                getQuantity(),
+                "Pizza",
+                "",
+                pizzaPrice,
+                pizzaPrice * getQuantity()
+        ));
         /*
         // DRINKS
         sb.append("\n🥤 DRINKS:\n");

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import static org.puralsight.util.Helpers.displayFooter;
 import static org.puralsight.util.Helpers.displayHeader;
 
-public class PizzaOrderingPage {
+public class PizzaOrderPage {
 
     public void pizzaOrdering(List<Item> itemList){
 
