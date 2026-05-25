@@ -23,4 +23,29 @@ public class Drink extends Item implements Priceable {
     public double getTotalPrice() {
         return size.getPrice()*getQuantity();
     }
+
+    @Override
+    public String toString() {
+        int drinkQuantity= getQuantity();
+        double price= getSize().getPrice();
+        StringBuilder sb = new StringBuilder();
+//        sb.append("\n🥤 DRINKS:\n");
+
+//        sb.append(String.format("🥤   %-1s %s- %-15s $%-10.2f Total: $%3.2f%n",
+//                drinkQuantity,
+//                getName(),
+//                getSize().name(),
+//                price,
+//                drinkQuantity * price
+//        ));
+        sb.append(String.format(
+                "🥤   %-3s %-14s %-10s $%-8.2f Total: $%-8.2f%n",
+                drinkQuantity,
+                getName(),
+                getSize().name(),
+                price,
+                drinkQuantity * price
+        ));
+        return sb.toString();
+    }
 }

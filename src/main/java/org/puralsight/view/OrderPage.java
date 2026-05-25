@@ -12,7 +12,10 @@ import static org.puralsight.util.Helpers.displayHeader;
 
 public class OrderPage {
 
-    PizzaOrderingPage pizzaOrder = new PizzaOrderingPage();
+    private PizzaOrderPage pizzaOrder = new PizzaOrderPage();
+    private DrinkOrderPage drinkOrder= new DrinkOrderPage();
+    private GarlicKnotsOrderPage garlicKnotsOrder = new GarlicKnotsOrderPage();
+    private CheckOutPage checkOutPage= new CheckOutPage();
 
     public void orderMenu(){
 
@@ -44,11 +47,13 @@ public class OrderPage {
         }
         switch (option) {
             case ADD_PIZZA -> pizzaOrder.pizzaOrdering(itemList);
-            case ADD_DRINK -> System.out.println("Hello Order");
-            case ADD_GARLIC_KNOTS -> System.out.println("Hello Order");
-            case CHECKOUT -> System.out.println("Hello Order");
+            case ADD_DRINK -> drinkOrder.drinkOrdering(itemList);
+            case ADD_GARLIC_KNOTS -> garlicKnotsOrder.garlicKnotsOrdering(itemList);
+            case CHECKOUT -> checkOutPage.checkOut(itemList);
             case CANCEL_ORDER -> {
             }
         }
     }
+
+
 }
