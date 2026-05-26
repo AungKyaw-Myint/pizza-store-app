@@ -70,7 +70,7 @@ public class Order {
     public void printItemList(){
         for (Item item : itemList) {
             System.out.printf(
-                    "%-1s   %-3s %-14s %-10s $%-8.2f Total: $%-8.2f%n",
+                    "%-1s   %-3s %-20s %s $%-8.2f Total: $%-8.2f%n",
                     Helpers.getIcon(item),
                     item.getQuantity(),
                     item.getName(),

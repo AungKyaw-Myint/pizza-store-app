@@ -3,8 +3,6 @@ package org.puralsight.model;
 import org.puralsight.enums.CrustType;
 import org.puralsight.enums.PizzaSize;
 import org.puralsight.enums.Topping;
-import org.puralsight.enums.ToppingType;
-import org.puralsight.service.Priceable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,9 +88,8 @@ public class Pizza extends Item{
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        double pizzaPrice= getTotalPrice();
-        // PIZZAS
-        sb.append("\n🍕 PIZZAS:\n" + getQuantity());
+
+        sb.append("\n🍕 PIZZAS:\n");
         sb.append(String.format("Size          : %s%n", pizzaSize));
         sb.append(String.format("Crust         : %s%n", crustType));
         sb.append(String.format("Stuffed Crust : %s%n", isStuffedCrust ? "YES" : "NO"));
@@ -122,8 +119,8 @@ public class Pizza extends Item{
                 getQuantity(),
                 "Pizza",
                 "",
-                pizzaPrice,
-                pizzaPrice * getQuantity()
+                getPrice(),
+                getTotalPrice()
         ));
         return sb.toString();
     }

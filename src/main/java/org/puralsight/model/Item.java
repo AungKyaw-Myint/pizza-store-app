@@ -1,7 +1,5 @@
 package org.puralsight.model;
 
-import org.puralsight.service.Priceable;
-
 public abstract class Item {
 
     private String name;
