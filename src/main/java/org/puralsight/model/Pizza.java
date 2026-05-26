@@ -9,7 +9,7 @@ import org.puralsight.service.Priceable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pizza extends Item implements Priceable {
+public class Pizza extends Item{
 
     private PizzaSize pizzaSize;
     private CrustType crustType;
@@ -77,6 +77,17 @@ public class Pizza extends Item implements Priceable {
     }
 
     @Override
+    public double getPrice() {
+        double toppingPriceBaseOnSize= pizzaSize.getToppingPriceMultiplier();
+
+        double toppingPrice = toppingList.stream()
+                .reduce(0.0, (x,y) ->
+                        (x + (toppingPriceBaseOnSize * y.getBasePrice())), Double::sum);
+
+        return (toppingPrice+pizzaSize.getBasePrice());
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         double pizzaPrice= getTotalPrice();
@@ -105,14 +116,6 @@ public class Pizza extends Item implements Priceable {
         }
 
         sb.append("───────────────────────────────────────────────\n");
-//        sb.append(String.format("TOTAL: $%.2f%n", getTotalPrice()));
-//        sb.append(String.format(
-//                "🍕   %-1s %-15s $%-10.2f  Total: $%3.2f%n",
-//                getQuantity(),
-//                "Pizza",
-//                pizzaPrice,
-//                pizzaPrice * getQuantity()
-//        ));
 
         sb.append(String.format(
                 "🍕   %-3s %-14s %-10s $%-8.2f Total: $%-8.2f%n",
@@ -122,38 +125,6 @@ public class Pizza extends Item implements Priceable {
                 pizzaPrice,
                 pizzaPrice * getQuantity()
         ));
-        /*
-        // DRINKS
-        sb.append("\n🥤 DRINKS:\n");
-
-        if (drinks == null || drinks.isEmpty()) {
-            sb.append("      None\n");
-        } else {
-            for (int i = 0; i < drinks.size(); i++) {
-                Drink d = drinks.get(i);
-                sb.append(String.format("      %d) %-15s $%.2f%n",
-                        (i + 1),
-                        d.getName(),
-                        d.getPrice()
-                ));
-            }
-        }
-
-        // GARLIC KNOTS
-        sb.append("\n🧄 GARLIC KNOTS:\n");
-        if (garlicKnotsCount <= 0) {
-            sb.append("      None\n");
-        } else {
-            sb.append("      Quantity: ").append(garlicKnotsCount).append("\n");
-        }
-
-        // TOTAL
-        sb.append("\n───────────────────────────────────────────────\n");
-        sb.append(String.format("TOTAL: $%.2f%n", calculateTotal()));
-        sb.append("───────────────────────────────────────────────\n");
-
-
-         */
         return sb.toString();
     }
 }

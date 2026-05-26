@@ -2,7 +2,7 @@ package org.puralsight.model;
 
 import org.puralsight.service.Priceable;
 
-public class Item implements Priceable {
+public abstract class Item {
 
     private String name;
     private int quantity;
@@ -23,9 +23,8 @@ public class Item implements Priceable {
         this.quantity = quantity;
     }
 
-    @Override
-    public double getTotalPrice() {
-        return 0;
-    }
+    public abstract double getTotalPrice();
+
+    public abstract double getPrice();
 
 }

@@ -3,7 +3,7 @@ package org.puralsight.model;
 import org.puralsight.enums.DrinkSize;
 import org.puralsight.service.Priceable;
 
-public class Drink extends Item implements Priceable {
+public class Drink extends Item {
 
 //    private String name;
     private DrinkSize size;
@@ -19,9 +19,16 @@ public class Drink extends Item implements Priceable {
         this.size = size;
     }
 
+
+
     @Override
     public double getTotalPrice() {
         return size.getPrice()*getQuantity();
+    }
+
+    @Override
+    public double getPrice() {
+        return size.getPrice();
     }
 
     @Override

@@ -8,7 +8,7 @@ import static org.puralsight.util.Helpers.displayHeader;
 
 public class HomePage {
 
-    OrderPage orderPage= new OrderPage();
+    private OrderPage orderPage= new OrderPage();
 
     public void starter(){
 

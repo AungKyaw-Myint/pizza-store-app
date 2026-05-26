@@ -1,5 +1,10 @@
 package org.puralsight.util;
 
+import org.puralsight.model.Drink;
+import org.puralsight.model.GarlicKnots;
+import org.puralsight.model.Item;
+import org.puralsight.model.Pizza;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -115,5 +120,17 @@ public class Helpers {
 
     public static void displayByName(String name) {
         System.out.println("──────────\t" + name + "\t──────────");
+    }
+
+    public static String getIcon(Item item){
+        if(item instanceof Pizza){
+            return "🍕";
+        }else if (item instanceof Drink){
+            return "🥤";
+        }else if (item instanceof GarlicKnots){
+            return "🧄";
+        }
+
+        return "";
     }
 }

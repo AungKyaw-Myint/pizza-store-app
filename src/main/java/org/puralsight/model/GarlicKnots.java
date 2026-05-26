@@ -2,11 +2,15 @@ package org.puralsight.model;
 
 import org.puralsight.service.Priceable;
 
-public class GarlicKnots extends Item implements Priceable {
+public class GarlicKnots extends Item{
 
     private static final double price=1.5;
 //    private int quantity;
 
+    @Override
+    public double getPrice(){
+        return price;
+    }
 
     @Override
     public double getTotalPrice() {
