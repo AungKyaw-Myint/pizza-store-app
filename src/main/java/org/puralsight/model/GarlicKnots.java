@@ -28,4 +28,9 @@ public class GarlicKnots extends Item{
         ));
         return sb.toString();
     }
+
+    @Override
+    public String toFileString() {
+        return "";
+    }
 }

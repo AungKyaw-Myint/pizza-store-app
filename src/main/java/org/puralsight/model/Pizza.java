@@ -2,17 +2,21 @@ package org.puralsight.model;
 
 import org.puralsight.enums.CrustType;
 import org.puralsight.enums.PizzaSize;
+import org.puralsight.enums.PizzaType;
 import org.puralsight.enums.Topping;
+import org.puralsight.service.FileWritable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Pizza extends Item{
+public class Pizza extends Item {
 
     private PizzaSize pizzaSize;
     private CrustType crustType;
     private List<Topping> toppingList;
     private boolean isStuffedCrust;
+    private PizzaType pizzaType;
 
     public Pizza() {
         toppingList= new ArrayList<>();
@@ -49,6 +53,14 @@ public class Pizza extends Item{
 
     public void setStuffedCrust(boolean stuffedCrust) {
         isStuffedCrust = stuffedCrust;
+    }
+
+    public PizzaType getPizzaType() {
+        return pizzaType;
+    }
+
+    public void setPizzaType(PizzaType pizzaType) {
+        this.pizzaType = pizzaType;
     }
 
     public void addTopping(Topping topping){
@@ -122,6 +134,35 @@ public class Pizza extends Item{
                 getPrice(),
                 getTotalPrice()
         ));
+        return sb.toString();
+    }
+
+    @Override
+    public String toFileString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("PIZZA|")
+                .append(pizzaType).append("|")
+                .append(pizzaSize).append("|")
+                .append(crustType).append("|")
+                .append(isStuffedCrust);
+
+        // toppings (only if exist)
+        if (toppingList != null && !toppingList.isEmpty()) {
+            String toppings = toppingList.stream()
+                    .map(Topping::name)
+                    .collect(Collectors.joining(","));
+            sb.append("|TOPPINGS:").append(toppings);
+        }
+
+        /*
+        // notes (optional)
+        if (notes != null && !notes.isEmpty()) {
+            sb.append("|NOTES:").append(notes);
+        }
+
+         */
+
         return sb.toString();
     }
 }

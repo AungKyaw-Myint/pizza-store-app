@@ -1,11 +1,14 @@
-package org.puralsight.service;
+package org.puralsight.service.impl;
 
 import org.puralsight.model.Order;
+import org.puralsight.service.Observer;
 
-public class FileWriterObserver implements Observer{
+public class FileWriterObserver implements Observer {
     @Override
     public void update(Order order) {
-
+        System.out.println(
+                "📝 File writer observer: " + order.getDateTime()
+        );
         /*
 
         try (FileWriter writer =

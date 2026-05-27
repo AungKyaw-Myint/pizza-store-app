@@ -1,12 +1,13 @@
-package org.puralsight.service;
+package org.puralsight.service.impl;
 
-import org.puralsight.model.Item;
 import org.puralsight.model.Order;
+import org.puralsight.service.Observer;
+import org.puralsight.service.Subject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventManager implements Subject{
+public class EventManager implements Subject {
 
     private List<Observer> observers = new ArrayList<>();
     private Order order;

@@ -1,6 +1,7 @@
 package org.puralsight.model;
 
 import org.puralsight.enums.DrinkSize;
+import org.puralsight.service.FileWritable;
 
 public class Drink extends Item {
 
@@ -39,5 +40,10 @@ public class Drink extends Item {
                 drinkQuantity * price
         ));
         return sb.toString();
+    }
+
+    @Override
+    public String toFileString() {
+        return "";
     }
 }

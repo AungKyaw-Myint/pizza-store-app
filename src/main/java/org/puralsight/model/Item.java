@@ -1,6 +1,8 @@
 package org.puralsight.model;
 
-public abstract class Item {
+import org.puralsight.service.FileWritable;
+
+public abstract class Item implements FileWritable {
 
     private String name;
     private int quantity;

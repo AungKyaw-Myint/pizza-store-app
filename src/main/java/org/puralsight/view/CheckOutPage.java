@@ -30,7 +30,9 @@ public class CheckOutPage {
             String custName= Helpers.readRequiredString("Enter your name :");
             order.setCustName(custName);
             order.setDateTime(LocalDateTime.now());
-            System.out.println("Order Complete");
+            System.out.println("Your order is complete!");
+
+            Helpers.getObserverManager().setOrder(order);
         }
 
     }
