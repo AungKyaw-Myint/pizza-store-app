@@ -5,8 +5,6 @@ import org.puralsight.model.Order;
 import org.puralsight.service.FileWritable;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,13 +16,15 @@ public class FileWriterCsv {
 
     private static final Path FILE_PATH = Path.of("src", "main", "files");
     private static final String DELIMITER = "\\|";
-    public static final DateTimeFormatter DATE_FORMAT =
+    public static final DateTimeFormatter DATE_TIME_FORMAT =
             DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+    public static final DateTimeFormatter DATE_FORMAT =
+            DateTimeFormatter.ofPattern("yyyyMMdd");
 
     public void orderFileWriting(Order order) {
         Path fullPath =
                 FILE_PATH.resolve("orders")
-                        .resolve(order.getDateTime().format(DATE_FORMAT));
+                        .resolve(order.getDateTime().format(DATE_FORMAT)+".txt");
 
         try (BufferedWriter writer = Files.newBufferedWriter(
                 fullPath,
@@ -37,7 +37,6 @@ public class FileWriterCsv {
                 writer.write("date|time|description|vendor|amount");
                 writer.newLine();
             }
-
              */
             String line =
 
@@ -58,7 +57,7 @@ public class FileWriterCsv {
     public <T extends FileWritable> void writeItems(List<T> items, Order order) {
         Path fullPath =
                 FILE_PATH.resolve("order-detail")
-                        .resolve(order.getDateTime().format(DATE_FORMAT));
+                        .resolve(order.getDateTime().format(DATE_TIME_FORMAT)+".txt");
 
         try (BufferedWriter writer = Files.newBufferedWriter(
                 fullPath,

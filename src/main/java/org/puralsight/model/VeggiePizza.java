@@ -22,7 +22,8 @@ public class VeggiePizza extends Pizza {
         StringBuilder sb = new StringBuilder();
 
         sb.append("PIZZA|")
-                .append(getPizzaType()).append("|")
+                .append(getName()).append("|")
+                .append(getQuantity()).append("|")
                 .append(getPizzaSize()).append("|")
                 .append(getCrustType()).append("|")
                 .append(isStuffedCrust());

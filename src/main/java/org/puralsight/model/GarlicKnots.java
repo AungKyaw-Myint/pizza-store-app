@@ -31,6 +31,13 @@ public class GarlicKnots extends Item{
 
     @Override
     public String toFileString() {
-        return "";
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("GARLIC|")
+                .append(getName()).append("|")
+                .append(getQuantity()).append("|")
+                .append("|")
+                .append("|");
+        return sb.toString();
     }
 }

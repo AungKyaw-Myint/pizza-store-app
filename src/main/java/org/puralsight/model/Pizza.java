@@ -2,7 +2,6 @@ package org.puralsight.model;
 
 import org.puralsight.enums.CrustType;
 import org.puralsight.enums.PizzaSize;
-import org.puralsight.enums.PizzaType;
 import org.puralsight.enums.Topping;
 import org.puralsight.service.FileWritable;
 
@@ -16,7 +15,6 @@ public class Pizza extends Item {
     private CrustType crustType;
     private List<Topping> toppingList;
     private boolean isStuffedCrust;
-    private PizzaType pizzaType;
 
     public Pizza() {
         toppingList= new ArrayList<>();
@@ -55,14 +53,6 @@ public class Pizza extends Item {
         isStuffedCrust = stuffedCrust;
     }
 
-    public PizzaType getPizzaType() {
-        return pizzaType;
-    }
-
-    public void setPizzaType(PizzaType pizzaType) {
-        this.pizzaType = pizzaType;
-    }
-
     public void addTopping(Topping topping){
         toppingList.add(topping);
     }
@@ -99,6 +89,7 @@ public class Pizza extends Item {
 
     @Override
     public String toString() {
+        double toppingPriceBaseOnSize= pizzaSize.getToppingPriceMultiplier();
         StringBuilder sb = new StringBuilder();
 
         sb.append("\n🍕 PIZZAS:\n");
@@ -119,7 +110,7 @@ public class Pizza extends Item {
                         "      %d) %-15s ($%.2f)%n",
                         (i + 1),
                         topping.name(),
-                        topping.getBasePrice()
+                        topping.getBasePrice()*toppingPriceBaseOnSize
                 ));
             }
         }
@@ -142,7 +133,8 @@ public class Pizza extends Item {
         StringBuilder sb = new StringBuilder();
 
         sb.append("PIZZA|")
-                .append(pizzaType).append("|")
+                .append(getName()).append("|")
+                .append(getQuantity()).append("|")
                 .append(pizzaSize).append("|")
                 .append(crustType).append("|")
                 .append(isStuffedCrust);
@@ -154,14 +146,6 @@ public class Pizza extends Item {
                     .collect(Collectors.joining(","));
             sb.append("|TOPPINGS:").append(toppings);
         }
-
-        /*
-        // notes (optional)
-        if (notes != null && !notes.isEmpty()) {
-            sb.append("|NOTES:").append(notes);
-        }
-
-         */
 
         return sb.toString();
     }

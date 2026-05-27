@@ -7,7 +7,7 @@ public enum PizzaViewOption {
     REGULAR_PIZZA(1, "Regular Pizza (Custom)"),
     MARGHERITA_PIZZA(2, "Margherita Pizza"),
     VEGGIE_PIZZA(3, "Veggie Pizza"),
-    EXIT(0, "Exit");
+    GO_BACK(0, "Go Back");
 
     private final int code;
     private final String label;

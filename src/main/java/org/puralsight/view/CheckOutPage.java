@@ -2,9 +2,12 @@ package org.puralsight.view;
 
 import org.puralsight.model.Item;
 import org.puralsight.model.Order;
+import org.puralsight.service.impl.EventManager;
 import org.puralsight.util.Helpers;
+import org.puralsight.util.ObserverManagerSingleton;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.puralsight.util.Helpers.displayHeader;
@@ -32,7 +35,13 @@ public class CheckOutPage {
             order.setDateTime(LocalDateTime.now());
             System.out.println("Your order is complete!");
 
-            Helpers.getObserverManager().setOrder(order);
+            EventManager observerManager =
+                    ObserverManagerSingleton
+                            .getInstance()
+                            .getObserverManager();
+            observerManager.setOrder(order);
+
+            itemList.clear();
         }
 
     }

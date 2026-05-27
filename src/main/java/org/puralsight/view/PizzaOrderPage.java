@@ -38,7 +38,7 @@ public class PizzaOrderPage {
                     itemList.add(pizza);
                 }
             }
-        } while (pizzaViewOption != PizzaViewOption.EXIT);
+        } while (pizzaViewOption != PizzaViewOption.GO_BACK);
     }
 
     private PizzaSize getPizzaSize(){
@@ -149,7 +149,7 @@ public class PizzaOrderPage {
             case REGULAR_PIZZA : return getOrginalPizza();
             case MARGHERITA_PIZZA : return getMargheritaPizza();
             case VEGGIE_PIZZA : return getVeggiePizza();
-            case EXIT : {
+            case GO_BACK: {
             }
         }
         return null;

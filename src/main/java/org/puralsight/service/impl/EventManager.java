@@ -30,6 +30,7 @@ public class EventManager implements Subject {
     }
 
     public void setOrder(Order order) {
+        this.order= new Order();
         this.order = order;
         notifyObservers();
     }

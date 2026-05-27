@@ -44,6 +44,15 @@ public class Drink extends Item {
 
     @Override
     public String toFileString() {
-        return "";
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("DRINK|")
+                .append(getName()).append("|")
+                .append(getQuantity()).append("|")
+                .append(getSize()).append("|")
+                .append("|")
+                .append("|");
+        return sb.toString();
     }
 }

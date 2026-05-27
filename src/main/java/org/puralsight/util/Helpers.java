@@ -16,10 +16,6 @@ import java.util.Scanner;
 
 public class Helpers {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final EventManager observerManager = new EventManager();
-    private static final LoggerObserver loggerObserver = new LoggerObserver();
-    private static final FileWriterObserver fileWriterObserver =new FileWriterObserver();
-    private static final SmsObserver smsObserver= new SmsObserver();
 
     public static String readString(String prompt) {
         System.out.print(prompt);
@@ -140,13 +136,5 @@ public class Helpers {
         }
 
         return "";
-    }
-
-    public static EventManager getObserverManager(){
-        observerManager.addObserver(loggerObserver);
-        observerManager.addObserver(fileWriterObserver);
-        observerManager.addObserver(smsObserver);
-
-        return observerManager;
     }
 }
