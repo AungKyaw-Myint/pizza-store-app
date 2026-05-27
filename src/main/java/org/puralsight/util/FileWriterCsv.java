@@ -41,7 +41,7 @@ public class FileWriterCsv {
             String line =
 
                     order.getCustName() + "|" +
-                    order.getDateTime().format(DATE_FORMAT) + "|" +
+                    order.getDateTime().format(DATE_TIME_FORMAT) + "|" +
                     order.getTotalItems() + "|" +
                     order.calculateGrandTotal();
 
