@@ -3,13 +3,13 @@ package org.puralsight.model;
 import org.puralsight.enums.CrustType;
 import org.puralsight.enums.PizzaSize;
 import org.puralsight.enums.Topping;
-import org.puralsight.enums.ToppingType;
-import org.puralsight.service.Priceable;
+import org.puralsight.service.FileWritable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Pizza extends Item implements Priceable {
+public class Pizza extends Item {
 
     private PizzaSize pizzaSize;
     private CrustType crustType;
@@ -77,11 +77,22 @@ public class Pizza extends Item implements Priceable {
     }
 
     @Override
+    public double getPrice() {
+        double toppingPriceBaseOnSize= pizzaSize.getToppingPriceMultiplier();
+
+        double toppingPrice = toppingList.stream()
+                .reduce(0.0, (x,y) ->
+                        (x + (toppingPriceBaseOnSize * y.getBasePrice())), Double::sum);
+
+        return (toppingPrice+pizzaSize.getBasePrice());
+    }
+
+    @Override
     public String toString() {
+        double toppingPriceBaseOnSize= pizzaSize.getToppingPriceMultiplier();
         StringBuilder sb = new StringBuilder();
-        double pizzaPrice= getTotalPrice();
-        // PIZZAS
-        sb.append("\n🍕 PIZZAS:\n" + getQuantity());
+
+        sb.append("\n🍕 PIZZAS:\n");
         sb.append(String.format("Size          : %s%n", pizzaSize));
         sb.append(String.format("Crust         : %s%n", crustType));
         sb.append(String.format("Stuffed Crust : %s%n", isStuffedCrust ? "YES" : "NO"));
@@ -99,61 +110,43 @@ public class Pizza extends Item implements Priceable {
                         "      %d) %-15s ($%.2f)%n",
                         (i + 1),
                         topping.name(),
-                        topping.getBasePrice()
+                        topping.getBasePrice()*toppingPriceBaseOnSize
                 ));
             }
         }
 
         sb.append("───────────────────────────────────────────────\n");
-//        sb.append(String.format("TOTAL: $%.2f%n", getTotalPrice()));
-//        sb.append(String.format(
-//                "🍕   %-1s %-15s $%-10.2f  Total: $%3.2f%n",
-//                getQuantity(),
-//                "Pizza",
-//                pizzaPrice,
-//                pizzaPrice * getQuantity()
-//        ));
 
         sb.append(String.format(
                 "🍕   %-3s %-14s %-10s $%-8.2f Total: $%-8.2f%n",
                 getQuantity(),
                 "Pizza",
                 "",
-                pizzaPrice,
-                pizzaPrice * getQuantity()
+                getPrice(),
+                getTotalPrice()
         ));
-        /*
-        // DRINKS
-        sb.append("\n🥤 DRINKS:\n");
+        return sb.toString();
+    }
 
-        if (drinks == null || drinks.isEmpty()) {
-            sb.append("      None\n");
-        } else {
-            for (int i = 0; i < drinks.size(); i++) {
-                Drink d = drinks.get(i);
-                sb.append(String.format("      %d) %-15s $%.2f%n",
-                        (i + 1),
-                        d.getName(),
-                        d.getPrice()
-                ));
-            }
+    @Override
+    public String toFileString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("PIZZA|")
+                .append(getName()).append("|")
+                .append(getQuantity()).append("|")
+                .append(pizzaSize).append("|")
+                .append(crustType).append("|")
+                .append(isStuffedCrust);
+
+        // toppings (only if exist)
+        if (toppingList != null && !toppingList.isEmpty()) {
+            String toppings = toppingList.stream()
+                    .map(Topping::name)
+                    .collect(Collectors.joining(","));
+            sb.append("|TOPPINGS:").append(toppings);
         }
 
-        // GARLIC KNOTS
-        sb.append("\n🧄 GARLIC KNOTS:\n");
-        if (garlicKnotsCount <= 0) {
-            sb.append("      None\n");
-        } else {
-            sb.append("      Quantity: ").append(garlicKnotsCount).append("\n");
-        }
-
-        // TOTAL
-        sb.append("\n───────────────────────────────────────────────\n");
-        sb.append(String.format("TOTAL: $%.2f%n", calculateTotal()));
-        sb.append("───────────────────────────────────────────────\n");
-
-
-         */
         return sb.toString();
     }
 }

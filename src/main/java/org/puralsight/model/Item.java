@@ -1,8 +1,8 @@
 package org.puralsight.model;
 
-import org.puralsight.service.Priceable;
+import org.puralsight.service.FileWritable;
 
-public class Item implements Priceable {
+public abstract class Item implements FileWritable {
 
     private String name;
     private int quantity;
@@ -23,9 +23,8 @@ public class Item implements Priceable {
         this.quantity = quantity;
     }
 
-    @Override
-    public double getTotalPrice() {
-        return 0;
-    }
+    public abstract double getTotalPrice();
+
+    public abstract double getPrice();
 
 }

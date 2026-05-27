@@ -3,11 +3,8 @@ package org.puralsight.view;
 import org.puralsight.enums.*;
 import org.puralsight.model.Drink;
 import org.puralsight.model.Item;
-import org.puralsight.model.Pizza;
 import org.puralsight.util.Helpers;
-import org.puralsight.view.enums.OrderViewOption;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.puralsight.util.Helpers.displayFooter;

@@ -50,10 +50,7 @@ public class OrderPage {
             case ADD_DRINK -> drinkOrder.drinkOrdering(itemList);
             case ADD_GARLIC_KNOTS -> garlicKnotsOrder.garlicKnotsOrdering(itemList);
             case CHECKOUT -> checkOutPage.checkOut(itemList);
-            case CANCEL_ORDER -> {
-            }
+            case CANCEL_ORDER -> itemList = new ArrayList<>();
         }
     }
-
-
 }

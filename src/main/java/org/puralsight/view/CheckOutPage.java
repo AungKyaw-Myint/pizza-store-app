@@ -1,9 +1,13 @@
 package org.puralsight.view;
 
-import org.puralsight.model.GarlicKnots;
 import org.puralsight.model.Item;
+import org.puralsight.model.Order;
+import org.puralsight.service.impl.EventManager;
 import org.puralsight.util.Helpers;
+import org.puralsight.util.ObserverManagerSingleton;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.puralsight.util.Helpers.displayHeader;
@@ -19,23 +23,25 @@ public class CheckOutPage {
             return;
         }
 
-        double totalPrice = 0;
-        int items= 0;
+        Order order= new Order();
+        order.setItemList(itemList);
+        order.printItemList();
+        printGrandTotal(order.calculateGrandTotal(), order.getTotalItems());
 
-        for(Item item : itemList){
-            System.out.println(item);
-            totalPrice+=item.getTotalPrice();
-            if(item instanceof GarlicKnots){
-                items+=1;
-            }else {
-                items+=item.getQuantity();
-            }
-        }
-
-        printGrandTotal(totalPrice,items);
         boolean isOrder=Helpers.readBoolean("Would you like to Complete Order (y/n)?");
         if(isOrder){
-            System.out.println("Order Complete");
+            String custName= Helpers.readRequiredString("Enter your name :");
+            order.setCustName(custName);
+            order.setDateTime(LocalDateTime.now());
+            System.out.println("Your order is complete!");
+
+            EventManager observerManager =
+                    ObserverManagerSingleton
+                            .getInstance()
+                            .getObserverManager();
+            observerManager.setOrder(order);
+
+            itemList.clear();
         }
 
     }
@@ -43,7 +49,7 @@ public class CheckOutPage {
     private void printGrandTotal(double totalPrice, int items){
         Helpers.displayFooter();
         System.out.printf(
-                "    %-1s %-15s 💰$%-10s : $%3.2f%n",
+                "    %-1s %-15s 💰%-10s : $%3.2f%n",
                 "🧾ITEMS :",
                 items,
                 "GRAND TOTAL",
