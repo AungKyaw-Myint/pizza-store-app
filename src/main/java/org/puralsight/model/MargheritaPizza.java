@@ -5,6 +5,11 @@ import org.puralsight.service.FileWritable;
 
 import java.util.stream.Collectors;
 
+/**
+ * Margherita Pizza class that inherits from Pizza.
+ * This is same features with the Regular Pizza (no customization topping)
+ * It also supports file writing for order generation.
+ */
 public class MargheritaPizza extends Pizza {
 
     private String specialNote;

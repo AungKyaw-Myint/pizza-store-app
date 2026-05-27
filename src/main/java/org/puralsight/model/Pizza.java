@@ -9,6 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Regular Pizza class that inherits from Item.
+ * This class serves as the parent/base pizza implementation
+ * for other specialized pizza types.
+ *
+ * It also supports file writing for order generation.
+ */
 public class Pizza extends Item {
 
     private PizzaSize pizzaSize;

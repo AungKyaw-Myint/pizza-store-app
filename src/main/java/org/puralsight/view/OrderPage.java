@@ -10,6 +10,9 @@ import java.util.List;
 import static org.puralsight.util.Helpers.displayFooter;
 import static org.puralsight.util.Helpers.displayHeader;
 
+/**
+ * Order Menu for the user. Choose the function like add item and checkout for the item.
+ */
 public class OrderPage {
 
     private PizzaOrderPage pizzaOrder = new PizzaOrderPage();

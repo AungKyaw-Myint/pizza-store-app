@@ -7,6 +7,9 @@ import org.puralsight.service.Subject;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Observer Manager Class
+ */
 public class EventManager implements Subject {
 
     private List<Observer> observers = new ArrayList<>();

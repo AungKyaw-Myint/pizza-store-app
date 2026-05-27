@@ -8,6 +8,9 @@ import java.util.List;
 
 import static org.puralsight.util.Helpers.displayHeader;
 
+/**
+ * Garlic Knots Order cmd page, including adding, quantity and confirmation
+ */
 public class GarlicKnotsOrderPage {
 
     public void garlicKnotsOrdering(List<Item> itemList){

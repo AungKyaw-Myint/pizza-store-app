@@ -1,5 +1,8 @@
 package org.puralsight.enums;
 
+/**
+ * Pizza for each size and price.
+ */
 public enum PizzaSize {
 
     SMALL(8, 8.50, 1),

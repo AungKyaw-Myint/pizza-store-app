@@ -12,6 +12,9 @@ import java.util.List;
 
 import static org.puralsight.util.Helpers.displayHeader;
 
+/**
+ * Checkout User cmd page
+ */
 public class CheckOutPage {
 
     public void checkOut(List<Item> itemList){
@@ -35,6 +38,11 @@ public class CheckOutPage {
             order.setDateTime(LocalDateTime.now());
             System.out.println("Your order is complete!");
 
+            /**
+             * Using Observer Design pattern.
+             * Sending all subscription list including like file writing, Email and SMS notification (future enhancement).
+             * Using Singleton Design Pattern creating ObserverManger.
+             */
             EventManager observerManager =
                     ObserverManagerSingleton
                             .getInstance()

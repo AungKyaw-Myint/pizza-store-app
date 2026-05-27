@@ -1,5 +1,9 @@
 package org.puralsight.model;
 
+/**
+ * GarlicKnots class that inherits from Item.
+ * It also supports file writing for order generation.
+ */
 public class GarlicKnots extends Item{
 
     private static final double price=1.5;

@@ -10,6 +10,9 @@ import java.util.List;
 import static org.puralsight.util.Helpers.displayFooter;
 import static org.puralsight.util.Helpers.displayHeader;
 
+/**
+ * Drink Order cmd page, including adding drink, choosing item and confirmation
+ */
 public class DrinkOrderPage {
 
     public void drinkOrdering(List<Item> itemList){

@@ -3,6 +3,10 @@ package org.puralsight.model;
 import org.puralsight.enums.DrinkSize;
 import org.puralsight.service.FileWritable;
 
+/**
+ * Drink class that inherits from Item.
+ * It also supports file writing for order generation.
+ */
 public class Drink extends Item {
 
     private DrinkSize size;

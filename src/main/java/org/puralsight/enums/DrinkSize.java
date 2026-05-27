@@ -1,5 +1,8 @@
 package org.puralsight.enums;
 
+/**
+ * Drink for each size and price.
+ */
 public enum DrinkSize {
 
     SMALL(2.00),

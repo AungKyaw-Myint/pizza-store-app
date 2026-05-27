@@ -1,5 +1,8 @@
 package org.puralsight.enums;
 
+/**
+ * Pizza topping customization related with topping type.
+ */
 public enum Topping {
 
     PEPPERONI(ToppingType.MEATS, 1.00),

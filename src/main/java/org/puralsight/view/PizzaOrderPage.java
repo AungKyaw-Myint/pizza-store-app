@@ -18,6 +18,9 @@ import java.util.stream.Collectors;
 import static org.puralsight.util.Helpers.displayFooter;
 import static org.puralsight.util.Helpers.displayHeader;
 
+/**
+ * Ordering Pizza cmd page, select pizza type, topping and customization pizza.
+ */
 public class PizzaOrderPage {
 
     public void pizzaOrdering(List<Item> itemList){
