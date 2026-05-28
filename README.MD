@@ -2,9 +2,7 @@
 
 ## Project Demo Video
 
-Watch the demo here:  
-https://yearuptemp-my.sharepoint.com/:v:/g/personal/amyint_my_yearupunited_org/IQC0YWhmNn0mQpm3nthNCfhtAUnCoBCrC9DB_30u_Yh-MzU?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=WRMg0Z
-
+[Watch the demo here](https://yearuptemp-my.sharepoint.com/:v:/g/personal/amyint_my_yearupunited_org/IQC0YWhmNn0mQpm3nthNCfhtAUnCoBCrC9DB_30u_Yh-MzU?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=WRMg0Z)
 ## Overview
 PIZZIO Shop is a Java-based Point of Sale (POS) application for a custom pizza restaurant.  
 This console application allows customers to fully customize pizza orders, add drinks and garlic knots, review their order, and generate receipt files automatically.
